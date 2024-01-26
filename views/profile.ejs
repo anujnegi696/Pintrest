@@ -1,0 +1,77 @@
+
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <link rel="stylesheet" href="/stylesheets/profile.css">
+     <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head> 
+
+  <body>
+    <!--  navbar          -->
+    <div class="navbar">
+      <div class="navbaritem">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="HELLO">
+      <h3 class="navh3">Pintrest</h3>
+      </div>
+      <div class="navbaritems">
+     <a href="/profile">PROFILE</a>
+     <a href="/feed">FEED</a>
+     <a href="/logout" class="logout">LOGOUT</a>
+    
+  </div>
+  </div>
+<!-- navbar-->
+
+
+     <div class="containerpers">
+        <div class="cardpers">
+          
+          <div class="profile-picture">
+            <img id="pimage" src="/images/uploads/<%= user.dp  %>" alt="">
+           
+
+
+            <!-- <img src="/images/uploads/<%= user.dp  %>" alt="Profile Picture">  -->
+          </div>
+          <h2 class="name"><%= user.fullname %></h2>
+          <h3 class="username">@<%=user.username%></h3>
+          <p class="tagline"><%= user.bio %></p>
+          <a class="ep" href="/editprofile">EDIT PROFILE</a>
+          <a class="ap"  href="/add" style="width: 100px; margin-left:46%; margin-top: 10px;margin-bottom:10px; background-color:red;">ADD POST</a>
+            </div>
+            
+             <div class="cards flex ">
+              <div class="card">
+                  <div class="custom-card">
+                   <img src="/images/uploads/<%= user?.posts[0]?.image %>" style="width: 100%; height: 100%; object-fit: cover;"  alt="">
+                  </div>
+                  <a href="/show/posts" class="text-xl font-semibold mt-3">YOUR UPLOADED PINS</a>
+                  <h5 class="text-sm font-medium"><%= user.posts.length %> PINS</h5>
+              </div>
+            </div>
+          
+          
+          
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+    document.querySelector("#uploadicon").addEventListener("click",function(){
+      document.querySelector("#uploadform input").click();
+    })
+
+    document.querySelector("#uploadform input").addEventListener("change",function(){
+      document.querySelector("#uploadform").submit();
+    })
+
+    
+    </script>
+  </body>
+</html>

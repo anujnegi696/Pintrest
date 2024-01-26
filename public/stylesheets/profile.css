@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    
+  }
+  
+.navbar {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  background-color: #292929;
+  padding: 10px; /* Adjust as needed */
+  z-index: 1000; /* Adjust as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.navbaritem {
+  display: flex;
+  align-items: center;
+  margin: -10px 0px;
+}
+
+.navh3 {
+  color: aliceblue;
+  padding-left: 10px;
+}
+
+img {
+  height: 25px;
+  width: 25px;
+}
+
+.navbaritems a {
+  font-size: 18px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+  margin-right: 20px;
+}
+
+.navbaritems a:hover {
+  color: #fff;
+}
+
+.navbaritems a:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+.navbaritems a:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.navbaritems a.logout {
+  color: #BE0216; /* Red color for LOGOUT */
+}
+/*navbar*/
+
+  .containerpers {
+    background-color: #292929;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  
+    padding-top: 40px;
+  }
+  
+  .cardpers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #292929;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #FFFFFF;
+  }
+  
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    display: block;
+    background-color: #FFFFFF;
+  }
+  
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .name {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .username {
+    font-size: 18px;
+        margin: 10px 0;
+  }
+  
+  .tagline,
+  .description {
+   
+    margin: 10px 0;
+  }
+  
+  .ep{
+ text-decoration: none;
+ background-color: #4CB5F9;
+ color: #FFFFFF;
+ width: 180px;
+ border-radius: 20px;
+ margin-left: 43%;
+  }
+
+  .ap{
+  text-decoration: none;
+  color: #FFFFFF;
+  border-radius: 20px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f30d19;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #a50008;
+  }
+
+  .flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: start;
+  }
+  
+  .container{
+    max-width: 100%;
+    background-color: #FFFFFF;
+    margin-top: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }  
+  
+  ::-webkit-scrollbar {
+    width: 1px; /* Adjust the width to make it thin */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Transparent thumb color */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #292929 /* Transparent track color */
+}
+ 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.card{
+  background-color: #292929;
+}
+.card a {
+  text-decoration: none;
+}
+.card h5 {
+ color: #FFFFFF;
+}
+
+.custom-card {
+  width: 208px; /* 52 * 4 (assuming 1rem = 16px) */
+  height: 160px; /* 40 * 4 (assuming 1rem = 16px) */
+  background-color: #f2f2f2; /* bg-zinc-200 equivalent */
+  border-radius: 8px; /* rounded-lg equivalent */
+}
+.img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 1.5rem; /* text-xl equivalent */
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+h5 {
+  font-size: 0.875rem; /* text-sm equivalent */
+  font-weight: medium;
+}
+

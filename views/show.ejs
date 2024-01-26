@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+  <title>Your Page Title</title>
+   <link rel="stylesheet" href="/stylesheets/show.css">
+</head>
+
+<body>
+    <!--  navbar          -->
+    <div class="navbar">
+      <div class="navbaritem">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="HELLO">
+      <h3 class="navh3">Pintrest</h3>
+      </div>
+      <div class="navbaritems">
+     <a href="/profile">PROFILE</a>
+     <a href="/feed">FEED</a>
+     <a href="/logout" class="logout">LOGOUT</a>
+         </div>
+  </div>
+
+
+  <div class="container">
+    <div class="cards">
+    
+      <% user.posts.forEach(function(elem){ %>
+      <div class="card">
+        <div class="image-container">
+          <img src="/images/uploads/<%= elem.image %>" alt="">
+        </div>
+        <h5 class="title"><%= elem.imageText %></h5>
+      </div>
+     
+      <% }) %>
+      
+    </div>
+  </div>
+</body>
+
+</html>

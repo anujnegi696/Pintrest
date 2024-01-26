@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/add.css">
+</head>
+<body>
+    <!--  navbar          -->
+    <div class="navbar">
+        <div class="navbaritem">
+         <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="HELLO">
+        <h3 class="navh3">Pintrest</h3>
+        </div>
+        <div class="navbaritems">
+       <a href="/profile">PROFILE</a>
+       <a href="/feed">FEED</a>
+       <a href="/logout" class="logout">LOGOUT</a>
+           </div>
+    </div>
+  <!-- navbar-->
+
+
+    <div class="container">
+        <h2>CREATE A NEW POST :</h2>
+        <form action="/createpost" method="post" enctype="multipart/form-data">
+            <input type="file" name="file"  >
+            <input type="text" placeholder="TITLE" name="filecaption">
+            <textarea type="text" placeholder="DESCRIPTION" name="description"></textarea>
+            <input type="submit">
+           
+        </form>
+    </div>
+</body>
+</html>

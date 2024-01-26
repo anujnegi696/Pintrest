@@ -1,0 +1,201 @@
+/* feed.css */
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+background-color: #292929;
+  padding-top: 40px;
+  overflow-x: hidden;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #292929;
+  padding: 10px; /* Adjust as needed */
+  z-index: 1000; /* Adjust as needed */
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+}
+
+.navbaritem {
+  display: flex;
+  align-items: center;
+}
+
+.navh3 {
+  color: aliceblue;
+  padding-left: 10px;
+}
+
+img {
+  height: 25px;
+  width: 25px;
+}
+
+.navbaritems a {
+  font-size: 18px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+  margin-right: 20px;
+}
+
+.navbaritems a:hover {
+  color: #fff;
+}
+
+.navbaritems a:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+
+.navbaritems a:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.navbaritems a.logout {
+  color: #BE0216; /* Red color for LOGOUT */
+}
+/*navbar*/
+
+.container{
+  background-color: #292929;
+ padding: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ 
+ }
+
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow:visible;
+  margin: 0 auto 20px;
+  display: block;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.profile-picture span{
+  display: flex;
+  justify-content: center;
+ position: absolute;
+  top: 60%;
+  left: 82%;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 100;
+    }
+ .profileedit a {
+  text-decoration: none;
+  background-color: #4CB5F9;
+  color: #FFFFFF;
+  padding: 5px;
+  border-radius: 20px;
+  width: 100px;
+  margin-left: 5px;
+  padding-left: 14px;
+ }
+
+  .ri-folder-open-fill{
+    margin-top: 6px;
+    margin-left: 4px;
+  }
+ 
+  .profileedit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .items {
+   
+    width: 30%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+.items input{
+  background-color: #292929;
+  color: #FFFFFF;
+  width: 250px; 
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #FFFFFF;
+}
+.items label{
+  color: #000;
+}
+
+.items label,
+.items input,
+.items textarea {
+    margin-bottom: -10px; /* Adjust as needed to add space between label and input/textarea */
+    padding: 8px 0px 8px 8px; /* Add padding to all sides of labels, inputs, and textareas */
+}
+
+#editNameForm,#editUsernameForm,#editBioForm{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+}
+
+#editBioForm textarea{
+  width: 250px;
+  height: 50px;
+  background-color: #292929;
+  color: #FFFFFF;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #FFFFFF;
+}
+
+button{
+  background-color: #4CB5F9;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 5px;
+  border: none;
+}
