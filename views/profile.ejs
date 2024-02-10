@@ -32,14 +32,16 @@
 
      <div class="containerpers">
         <div class="cardpers">
-          
           <div class="profile-picture">
-            <img id="pimage" src="/images/uploads/<%= user.dp  %>" alt="">
-           
-
-
-            <!-- <img src="/images/uploads/<%= user.dp  %>" alt="Profile Picture">  -->
+            <% if (user.dp) { %>
+              <!-- Display the user's uploaded profile picture -->
+              <img id="pimage" src="/images/uploads/<%= user.dp %>" alt="Profile Picture">
+            <% } else { %>
+              <!-- Display a default profile picture -->
+              <img id="pimage" src="/images/default/default.jpeg" alt="Default Profile Picture">
+            <% } %>
           </div>
+        
           <h2 class="name"><%= user.fullname %></h2>
           <h3 class="username">@<%=user.username%></h3>
           <p class="tagline"><%= user.bio %></p>
@@ -47,18 +49,24 @@
           <a class="ap"  href="/add" style="width: 100px; margin-left:46%; margin-top: 10px;margin-bottom:10px; background-color:red;">ADD POST</a>
             </div>
             
-             <div class="cards flex ">
+             <div class="cards flex " >
               <div class="card">
-                  <div class="custom-card">
+                  <!-- <div class="custom-card">
                    <img src="/images/uploads/<%= user?.posts[0]?.image %>" style="width: 100%; height: 100%; object-fit: cover;"  alt="">
-                  </div>
+                  </div> -->
+                  <div class="custom-card">
+                    <% if (user && user.posts && user.posts.length > 0 && user.posts[0].image) { %>
+                     <img src="/images/uploads/<%= user.posts[0].image %>" alt="">
+                    <% } else { %>
+                      <img src="/images/default/defalutPin.png"   alt="Default Image">
+                    <% } %>
+                  </div> 
+                  
                   <a href="/show/posts" class="text-xl font-semibold mt-3">YOUR UPLOADED PINS</a>
                   <h5 class="text-sm font-medium"><%= user.posts.length %> PINS</h5>
               </div>
             </div>
-          
-          
-          
+                           
     </div>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

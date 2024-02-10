@@ -4,6 +4,7 @@ const userModel = require('./users');
 const postModel = require('./posts');
 const passport = require('passport');
 const upload = require("./multer")
+const path = require('path');
 
 const localStrategy = require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
@@ -14,13 +15,40 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/profile',isLoggedIn, async function(req, res, next) {
- const user = await userModel.findOne({
-  username:req.session.passport.user
- })
- .populate("posts")
-  res.render("profile",{user});
+// router.get('/profile',isLoggedIn, async function(req, res, next) {
+//  const user = await userModel.findOne({
+//   username:req.session.passport.user
+//  })
+//  .populate("posts")
+//   res.render("profile",{user});
+// });
+
+
+
+router.get('/profile', isLoggedIn, async function(req, res, next) {
+  try {
+    // Find the user by their username
+    const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
+    
+    // Check if the user has uploaded a profile picture
+    let profilePicture;
+    if (user.profilePicture) {
+      // If a profile picture is uploaded, set its path
+      profilePicture = user.profilePicture;
+    } else {
+      // If no profile picture is uploaded, set the path to the default picture
+      profilePicture = path.join(__dirname, '../public/images/default-profile-picture.png');
+    }
+
+    // Render the profile page and pass the user and profile picture path to the view
+    res.render("profile", { user, profilePicture });
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error('Error fetching user profile:', error);
+    next(error); // Pass the error to Express's error handling middleware
+  }
 });
+
 
 router.get('/editprofile',isLoggedIn, async function(req, res, next) {
   const user = await userModel.findOne({
@@ -99,9 +127,6 @@ router.post('/fileupload',isLoggedIn, upload.single("image"),async function(req,
 });
 
  
-
-
-
 router.get('/login', function(req, res) {
   res.render("login",{error:req.flash('error')});
  
@@ -167,6 +192,23 @@ router.post("/login",passport.authenticate("local",{
   failureFlash: true 
 }), function(req, res){
 });
+
+router.post('/remove-profile-picture', isLoggedIn, async (req, res) => {
+  try {
+      const user = await userModel.findOne({ username: req.session.passport.user });
+      if (user) {
+       user.dp = null; 
+      await user.save();
+      res.status(200).json({ message: 'Profile picture removed successfully' });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error removing profile picture:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 router.get("/logout",function(req,res){
   req.logout(function(err) {

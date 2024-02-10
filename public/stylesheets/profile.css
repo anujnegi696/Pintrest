@@ -217,9 +217,10 @@ img {
   background-color: #f2f2f2; /* bg-zinc-200 equivalent */
   border-radius: 8px; /* rounded-lg equivalent */
 }
-.img{
-  height: 100%;
+
+.custom-card>img {
   width: 100%;
+   height: 100%; 
   object-fit: cover;
 }
 

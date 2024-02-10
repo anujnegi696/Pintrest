@@ -31,11 +31,26 @@
       </form>
 
     <div class="profileedit">
-        <div class="profile-picture">
+      <div class="profile-picture">
+        <span id="uploadicon"><i class="ri-folder-open-fill"></i></i></span>
+        <% if (user.dp) { %>
+          <!-- Display the user's uploaded profile picture -->
+          <img id="pimage" src="/images/uploads/<%= user.dp %>" alt="Profile Picture">
+        <% } else { %>
+          <!-- Display a default profile picture -->
+          <img id="pimage" src="/images/default/default.jpeg" alt="Default Profile Picture">
+        <% } %>
+      </div>
+        <!-- <div class="profile-picture">
             <span id="uploadicon"><i class="ri-folder-open-fill"></i></i></span>
             <img src="/images/uploads/<%= user.dp%>" alt="">
-         </div>
+         </div> -->
+         <div class="pictureElement">
+          <a href="#" id="uploadelem"> Edit Picture</a>
+          <button id="remove-profile-picture">Remove Profile </button>
+          </div><!--
          <a href="#" id="uploadelem"> Edit Picture</a>
+         <button id="remove-profile-picture">Remove Profile Picture</button> -->
         </div>   
 
         <div class="items">
@@ -71,6 +86,37 @@
     
 
    <script>
+
+    // Client-side JavaScript code
+   document.addEventListener('DOMContentLoaded', function() {
+  const removeProfilePictureButton = document.getElementById('remove-profile-picture');
+  if (removeProfilePictureButton) {
+    removeProfilePictureButton.addEventListener('click', function() {
+      // Send a POST request to the server to remove the profile picture
+      fetch('/remove-profile-picture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // Specify the content type as JSON
+        },
+        body: JSON.stringify({}) // Send an empty JSON object in the request body
+      })
+      .then(response => {
+        if (response.ok) {
+          // If request is successful, update profile picture displayed on the page
+          document.getElementById('pimage').src = '/images/default/default.jpeg';
+        } else {
+          // If request fails, log the error
+          console.error('Error removing profile picture:', response.statusText);
+        }
+      })
+      .catch(error => {
+        // Handle any network errors
+        console.error('Network error:', error);
+      });
+    });
+  }
+});
+
     document.getElementById('uploadelem').addEventListener('click', function() {
       document.querySelector('#uploadform input').click();
     });
@@ -90,6 +136,8 @@
     function saveUsername() {
         document.getElementById('editUsernameForm').submit();
     }
+
+
     </script>
 </body>
 </html>

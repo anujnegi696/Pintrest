@@ -134,6 +134,10 @@ img {
   padding-left: 14px;
  }
 
+ #remove-profile-picture{
+  background-color: red;
+ }
+
   .ri-folder-open-fill{
     margin-top: 6px;
     margin-left: 4px;
