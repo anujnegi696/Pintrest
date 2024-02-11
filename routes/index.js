@@ -27,25 +27,22 @@ router.get('/', function(req, res, next) {
 
 router.get('/profile', isLoggedIn, async function(req, res, next) {
   try {
-    // Find the user by their username
-    const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
-    
-    // Check if the user has uploaded a profile picture
-    let profilePicture;
+       const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
+        let profilePicture;
     if (user.profilePicture) {
-      // If a profile picture is uploaded, set its path
+     
       profilePicture = user.profilePicture;
     } else {
-      // If no profile picture is uploaded, set the path to the default picture
+      
       profilePicture = path.join(__dirname, '../public/images/default-profile-picture.png');
     }
 
-    // Render the profile page and pass the user and profile picture path to the view
+    
     res.render("profile", { user, profilePicture });
   } catch (error) {
-    // Handle any errors that occur during the process
+   
     console.error('Error fetching user profile:', error);
-    next(error); // Pass the error to Express's error handling middleware
+    next(error); 
   }
 });
 
@@ -83,18 +80,17 @@ router.post('/fileupload',isLoggedIn, upload.single("image"),async function(req,
 
  router.post('/updateprofile',isLoggedIn, upload.single("image"),async function(req, res, next) {
   const user =  await userModel.findOne({username: req.session.passport.user})
-     // Only update bio if it's provided in the form data
+    
      if (req.body.bio !== undefined) {
       user.bio = req.body.bio;
   }
-
-  // Update fullname only if it's provided in the form data
-  if (req.body.fullname !== undefined) {
+    if (req.body.fullname !== undefined) {
       user.fullname = req.body.fullname;
   }
    await user.save();
    res.redirect("/editprofile");
  });
+
  router.post('/updateusername', isLoggedIn, upload.single("image"), async function(req, res, next) {
   try {
       const user = await userModel.findOne({ username: req.session.passport.user });
@@ -113,12 +109,9 @@ router.post('/fileupload',isLoggedIn, upload.single("image"),async function(req,
           if (isUsernameUnique) {
               return res.status(400).send('Username is already taken. Please choose another.');
           }
-
-          // Update the username
           user.username = newUsername;
           await user.save();
       }
-
       res.redirect('/editprofile');
   } catch (error) {
       console.error(error);
@@ -170,9 +163,6 @@ router.post('/createpost',isLoggedIn,upload.single("file"), async function(req, 
  res.redirect('/profile');
  });
  
-
-
-
 router.post("/register", function(req, res) {
   const { username, email, fullname } = req.body;
   const userData = new userModel({ username, email,fullname });
@@ -210,6 +200,25 @@ router.post('/remove-profile-picture', isLoggedIn, async (req, res) => {
 });
 
 
+router.get('/search', async (req, res) => {
+  try {
+    // Extract the search query from the request
+    const { searchUsername } = req.query;
+
+    // Query the database for matching user profiles
+    
+    const user = await userModel.find({ username: searchUsername })
+    .populate('posts');
+    
+
+    // Render the search results page
+    res.render('search', { user });
+  } catch (error) {
+    console.error('Error searching for users:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 router.get("/logout",function(req,res){
   req.logout(function(err) {
     if (err) { return next(err); }
@@ -221,6 +230,5 @@ function isLoggedIn(req,res,next){
   if(req.isAuthenticated())return next();
   res.redirect("/login");
 }
-
 
 module.exports = router;

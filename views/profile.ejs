@@ -19,6 +19,10 @@
       <div class="navbaritem">
        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="HELLO">
       <h3 class="navh3">Pintrest</h3>
+      <form class="searchform" action="/search" method="GET">
+        <input type="text" name="searchUsername" placeholder="Enter username">
+        <button type="submit">Search</button>
+      </form>
       </div>
       <div class="navbaritems">
      <a href="/profile">PROFILE</a>
@@ -65,21 +69,11 @@
                   <a href="/show/posts" class="text-xl font-semibold mt-3">YOUR UPLOADED PINS</a>
                   <h5 class="text-sm font-medium"><%= user.posts.length %> PINS</h5>
               </div>
-            </div>
-                           
+            </div>           
     </div>
-   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
-    document.querySelector("#uploadicon").addEventListener("click",function(){
-      document.querySelector("#uploadform input").click();
-    })
 
-    document.querySelector("#uploadform input").addEventListener("change",function(){
-      document.querySelector("#uploadform").submit();
-    })
-
-    
     </script>
   </body>
 </html>

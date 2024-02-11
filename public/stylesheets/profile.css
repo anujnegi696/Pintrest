@@ -24,6 +24,10 @@ body {
   display: flex;
   align-items: center;
   margin: -10px 0px;
+  
+}
+.searchform{
+  padding-left: 20px;
 }
 
 .navh3 {
